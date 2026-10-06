@@ -592,13 +592,13 @@
   }
 }
 
-.urlbarView-row[has-action]:is([type="switchtab"], [type="remotetab"], [type="clipboard"]) {
+.urlbarView-row[has-action]:is([type="switchtab"], [type="remotetab"], [type="clipboard"], [dynamicType="zen-site-search"]) {
   & .urlbarView-action:last-child {
     margin-left: auto !important;
     margin-right: 0 !important;
   }
 
-  &:is([type="switchtab"], [type="remotetab"]) .urlbarView-action:last-child {
+  &:is([type="switchtab"], [type="remotetab"], [dynamicType="zen-site-search"]) .urlbarView-action:last-child {
     background: transparent !important;
     align-items: center;
     display: flex;
@@ -739,6 +739,43 @@
 #urlbar-search-mode-indicator-title {
   font-weight: 600;
   padding: 0;
+}
+
+/* Site search stays alongside ordinary navigation and tab suggestions. */
+.urlbarView-row[dynamicType="zen-site-search"] {
+  .urlbarView-row-inner {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+  }
+
+  .urlbarView-url {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .urlbarView-action {
+    flex: none;
+    white-space: nowrap;
+  }
+}
+
+#urlbar[zen-site-search] {
+  #urlbar-search-mode-indicator {
+    background: var(--zen-site-search-accent) !important;
+    color: white;
+  }
+
+  #urlbar-search-mode-indicator-close {
+    display: flex;
+    color: inherit;
+  }
+
+  .urlbarView-row[selected] {
+    --zen-selected-bg: var(--zen-site-search-accent);
+  }
 }
 
 /* These are buttons that we dont need to be
