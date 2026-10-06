@@ -42,3 +42,6 @@
 
 - name: browser.urlbar.shortcuts.workspaces
   value: true
+
+- name: zen.urlbar.site-search.enabled
+  value: true

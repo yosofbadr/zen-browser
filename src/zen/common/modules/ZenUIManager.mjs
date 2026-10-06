@@ -222,6 +222,10 @@ window.gZenUIManager = {
     );
     registerZenUrlbarProviders();
     window.gZenSiteDataPanel = new ZenSiteDataPanel(window);
+    const { ZenSiteSearch } = ChromeUtils.importESModule(
+      "resource:///modules/ZenSiteSearch.sys.mjs"
+    );
+    window.gZenSiteSearch = new ZenSiteSearch(window);
     gURLBar._zenTrimURL = this.urlbarTrim.bind(this);
   },
 

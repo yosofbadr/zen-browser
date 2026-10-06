@@ -167,3 +167,6 @@ zen-window-sync-migration-dialog-accept = Got It
 zen-appmenu-new-blank-window =
     .label = New Blank Window
 
+# Quick site search in the address bar. Enter or a click starts search mode.
+# $name (String) is the site's search engine name.
+zen-site-search-hint = Search { $name }
