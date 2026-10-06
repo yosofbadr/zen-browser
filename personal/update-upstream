@@ -1,0 +1,19 @@
+#!/bin/sh
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+set -eu
+script_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+cd "$script_dir/.."
+if [ -n "$(git status --porcelain)" ]; then
+  echo 'Commit or stash your changes before updating upstream.' >&2
+  exit 1
+fi
+if [ "$(git branch --show-current)" = main ]; then
+  echo 'Create a testing branch before updating upstream.' >&2
+  exit 1
+fi
+branch=${1:-dev}
+git fetch upstream "$branch"
+git merge --no-edit FETCH_HEAD

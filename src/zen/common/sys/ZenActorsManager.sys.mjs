@@ -31,6 +31,8 @@ let JSWINDOWACTORS = {
     },
     safeForUntrustedWebProcess: true,
     matches: [
+      // Personal builds must also support the production Mods marketplace.
+      "https://zen-browser.app/*",
       ...Services.prefs.getStringPref("zen.injections.match-urls").split(","),
       "about:preferences",
     ],
